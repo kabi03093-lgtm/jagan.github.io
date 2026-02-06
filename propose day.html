@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Forever Happiness</title>
+
+<style>
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-family: Georgia, serif;
+  background: url('ptopose day.jpeg') no-repeat center center/cover;
+  background-attachment: fixed;
+}
+
+/* Dark overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+/* Scroll container */
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+/* Glass box */
+.box {
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(8px);
+  padding: 25px;
+  border-radius: 20px;
+  color: white;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  box-shadow: 0 0 25px rgba(255,0,80,0.5);
+}
+
+/* Cursor */
+.cursor {
+  display: inline-block;
+  width: 4px;
+  background: white;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%,100%{opacity:1;}
+  50%{opacity:0;}
+}
+
+/* Buttons */
+.buttons {
+  margin-top: 20px;
+  display: none;
+  text-align: center;
+}
+
+button {
+  padding: 12px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+#yesBtn {
+  background: hotpink;
+  color: white;
+}
+
+#noBtn {
+  background: black;
+  color: white;
+  position: relative;
+}
+
+/* Sad quotes box */
+#sadBox {
+  display: none;
+  margin-top: 20px;
+  font-size: 1.3rem;
+  line-height: 1.0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="container">
+  <div class="box">
+    <span id="typed-msg"></span><span class="cursor">|</span>
+
+    <div class="buttons" id="buttons">
+      <button id="yesBtn">YES 💖</button>
+      <button id="noBtn">NO 😢</button>
+    </div>
+
+    <div id="sadBox"></div>
+  </div>
+</div>
+
+<script>
+// Main proposal message
+const message = `Ithuku munnadi na evlo situation la happy ah irunthirukan neraya per en life la vanthiruknga ana appo la illatha oru impact na unna patha antha second la etho puthusa enaku irunchi you entered my heart even before you entered my life.
+
+And finally when you entered my life I can absorb that my days were become brighter than before.
+
+You are the reason I smiled a lot. Every moment with you is special.
+
+You entered my life as a friend, but now I want you as my forever happiness 💖
+
+Will you be mine forever?
+
+I LOVEEEEEEEEEEEE YOUUUUUUU SOOOOO MUCHHHH 🫂`;
+
+let i = 0;
+const speed = 60;
+
+function typeWriter() {
+  if (i < message.length) {
+    const char = message.charAt(i);
+    document.getElementById("typed-msg").innerHTML += (char === '\n') ? "<br><br>" : char;
+    i++;
+    setTimeout(typeWriter, speed);
+  } 
+  else {
+    document.getElementById("buttons").style.display = "block";
+  }
+}
+
+window.onload = () => typeWriter();
+
+// YES BUTTON
+document.getElementById("yesBtn").onclick = () => {
+  document.querySelector(".box").innerHTML = `
+  <div style="font-size:1.6rem; color:pink; line-height:1.5;">
+  That's so sweet 💖<br><br>
+  I will take care of you for my entire life.<br>
+  I will be always there for youhh.<br>
+  Keep smiling always 😊
+  </div>`;
+};
+
+// NO BUTTON LOGIC
+let jumpCount = 0;
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", () => {
+  if (jumpCount < 5) {
+    jumpCount++;
+    noBtn.style.left = Math.random()*200 - 100 + "px";
+    noBtn.style.top = Math.random()*200 - 100 + "px";
+  }
+});
+
+// After 5 jumps allow click
+noBtn.onclick = () => {
+  if (jumpCount < 10) return;
+
+  document.getElementById("sadBox").style.display = "block";
+  document.getElementById("sadBox").innerHTML = "";
+  showSadQuotes();
+};
+
+// Sad quotes typing
+const sadLines = [
+"Why??",
+"Really",
+"Think again",
+"Give me a chance",
+"I will be sad 😔"
+];
+
+let l = 0;
+function showSadQuotes() {
+  if (l < sadLines.length) {
+    document.getElementById("sadBox").innerHTML += sadLines[l] + "<br>";
+    l++;
+    setTimeout(showSadQuotes, 800);
+  }
+}
+</script>
+
+</body>
+</html>

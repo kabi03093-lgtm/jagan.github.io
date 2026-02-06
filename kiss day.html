@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Kiss Day</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Georgia", serif;
+        }
+
+        body {
+            height: 100vh;
+            background: url("kiss day.jpeg") no-repeat center center/cover;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Soft overlay */
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 240, 230, 0.6);
+            z-index: 1;
+        }
+
+        /* Quote container */
+        .quote-box {
+            position: absolute;
+            top: 12%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            text-align: center;
+            color: #4b2a2a;
+            font-size: 20px;
+            line-height: 1.8;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        /* Cursor */
+        #typeText::after {
+            content: "|";
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .quote-box {
+                width: 90%;
+                font-size: 17px;
+                top: 10%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quote-box">
+        <p id="typeText"></p>
+    </div>
+
+    <script>
+        const text = `Kiss is not just an action it's the one which delivers the feelings of our's.
+
+Kissing doesn't need to be planned it was the unexpected moment that we forgot ourselves and involving without our knowledge.
+
+Kissing you was become my favourite action after you fell in love with me.
+
+Even though we both doesn't know how to kiss still our first kiss was the memorable moment.
+
+It's scene is created by while you were talking to me I accidentally looked your lips and that's the moment I lost myself and it leads to the first kiss of our love story.
+
+So Happy Kiss Day to the girl whom I have rights to kiss.`;
+
+        let index = 0;
+        const speed = 120; // ~0.5x speed (slow romantic)
+
+        function typeWriter() {
+            if (index < text.length) {
+                document.getElementById("typeText").innerHTML +=
+                    text.charAt(index) === "\n" ? "<br><br>" : text.charAt(index);
+                index++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        window.onload = typeWriter;
+    </script>
+
+</body>
+</html>

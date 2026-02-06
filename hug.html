@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Hug Day</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url("hug.jpeg") no-repeat center center/cover;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Dark overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    z-index: 0;
+}
+
+/* Center faded glass box */
+.text-box {
+    position: relative;
+    z-index: 2;
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(12px);
+    padding: 30px 45px;
+    border-radius: 25px;
+    border: 2px solid rgba(255,255,255,0.3);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    width: 75%;
+    max-width: 900px;
+    text-align: center;
+    line-height: 1.7;
+    text-shadow: 0 0 12px black;
+}
+
+/* Cursor */
+.cursor {
+    display: inline-block;
+    width: 8px;
+    background: white;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%,50% {opacity:1;}
+    50.1%,100% {opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="text-box" id="text"></div><span class="cursor"></span>
+
+<script>
+const lines = [
+"We have met many times and we have got chances to be hugged,",
+"even though we still didn't hug it's not because of incomfortness,",
+"it's because of our souls were already merged together.",
+"",
+"We forget ourselves when we were together,",
+"the moment of holding your hands itself feels like a hug...",
+"",
+"So we never get the thought for real hug.",
+"When we missed each other we felt the virtual hugs,",
+"which can be sometimes even more special than the real hug.",
+"",
+"We didn't hug directly but we hugged indirectly.",
+"",
+"💞 Happy Hug Day to my partner 💞"
+];
+
+let lineIndex = 0;
+let charIndex = 0;
+let speed = 50; // typing speed (0.5x slow)
+
+function typeText() {
+    if (lineIndex < lines.length) {
+        let currentLine = lines[lineIndex];
+
+        if (charIndex < currentLine.length) {
+            document.getElementById("text").innerHTML += currentLine[charIndex];
+            charIndex++;
+            setTimeout(typeText, speed);
+        } 
+        else {
+            document.getElementById("text").innerHTML += "<br>";
+            lineIndex++;
+            charIndex = 0;
+            setTimeout(typeText, 500); // pause between lines
+        }
+    }
+}
+
+typeText();
+</script>
+
+</body>
+</html>

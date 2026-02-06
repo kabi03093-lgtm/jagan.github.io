@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Promise Day</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url("valantaine day.jpeg") no-repeat center center/cover;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Dark overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    z-index: 0;
+}
+
+/* Center faded box */
+.text-box {
+    position: relative;
+    z-index: 2;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    padding: 30px 50px;
+    border-radius: 25px;
+    border: 2px solid rgba(255,255,255,0.3);
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    width: 70%;
+    max-width: 800px;
+    text-align: center;
+    line-height: 1.7;
+    text-shadow: 0 0 15px black;
+}
+
+/* Cursor */
+.cursor {
+    display: inline-block;
+    width: 8px;
+    background: white;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%,50% {opacity:1;}
+    50.1%,100% {opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="text-box" id="text"></div><span class="cursor"></span>
+
+<script>
+const lines = [
+"Un life-la kastame varama irukum nu na promise panna mudiyathu.",
+"But I assure you one thing ennala un life-la endha kastamum varama pathupen.",
+"",
+"Endha situation ah irunthalum, endha kashtam vandhalum,",
+"nee adha thaniya face panna maata I’ll always be there for you.",
+"",
+"Eppovum na un kaiya vida maaten.",
+"I promise, I’ll be with you in every situation, always.",
+"",
+"💞 Happy Promise Day 💞"
+];
+
+let lineIndex = 0;
+let charIndex = 0;
+let speed = 50; // 0.5x typing speed
+
+function typeText() {
+    if (lineIndex < lines.length) {
+        let currentLine = lines[lineIndex];
+
+        if (charIndex < currentLine.length) {
+            document.getElementById("text").innerHTML += currentLine[charIndex];
+            charIndex++;
+            setTimeout(typeText, speed);
+        } 
+        else {
+            document.getElementById("text").innerHTML += "<br>";
+            lineIndex++;
+            charIndex = 0;
+            setTimeout(typeText, 500); // pause between lines
+        }
+    }
+}
+
+typeText();
+</script>
+
+</body>
+</html>

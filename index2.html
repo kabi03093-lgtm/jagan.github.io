@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine Week Celebration</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url("file:///D:/jagan/index%202%20bg.jpeg") no-repeat center center/cover;
+    background-attachment: fixed; /* FIXED BACKGROUND */
+    padding: 30px 0;
+}
+
+/* Title */
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px black;
+}
+
+/* Grid Layout */
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    width: 80%;
+    margin: auto;
+}
+
+/* Card */
+.card {
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Circular Image */
+.card img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+/* Hover Effect */
+.card:hover img {
+    transform: scale(1.12);
+    border-color: pink;
+}
+
+/* Text */
+.card p {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 12px;
+    text-shadow: 0 0 8px black;
+}
+</style>
+</head>
+
+<body>
+
+<h1>❤️ My Valentine Week Celebration ❤️</h1>
+
+<div class="container">
+
+<div class="card" onclick="goRose()">
+    <img src="file:///D:/jagan/Logo%20rose.jpeg">
+    <p>🌹 Rose Day</p>
+</div>
+
+<div class="card" onclick="goPropose()">
+    <img src="file:///D:/jagan/Logo%20prop.jpeg">
+    <p>💍 Propose Day</p>
+</div>
+
+<div class="card" onclick="goChocolate()">
+    <img src="file:///D:/jagan/Logo%20choco.jpeg">
+    <p>🍫 Chocolate Day</p>
+</div>
+
+<div class="card" onclick="goTeddy()">
+    <img src="file:///D:/jagan/Logo%20teddy.jpeg">
+    <p>🧸 Teddy Day</p>
+</div>
+
+<div class="card" onclick="goPromise()">
+    <img src="file:///D:/jagan/Logo%20pro.jpeg">
+    <p>🤝 Promise Day</p>
+</div>
+
+<div class="card" onclick="goHug()">
+    <img src="file:///D:/jagan/Logo%20hug.jpeg">
+    <p>🤗 Hug Day</p>
+</div>
+
+<div class="card" onclick="goKiss()">
+    <img src="file:///D:/jagan/Logo%20kisss.jpeg">
+    <p>💋 Kiss Day</p>
+</div>
+
+<div class="card" onclick="goValentine()">
+    <img src="file:///D:/jagan/Logo%20valan.jpeg">
+    <p>❤️ Valentine’s Day</p>
+</div>
+
+</div>
+
+<script>
+function goRose() { window.location.href = "file:///D:/jagan/rose.html"; }
+function goPropose() { window.location.href = "file:///D:/jagan/propose%20day.html"; }
+function goChocolate() { window.location.href = "file:///D:/jagan/cocolate.html"; }
+function goTeddy() { window.location.href = "file:///D:/jagan/teddy.html"; }
+function goPromise() { window.location.href = "file:///D:/jagan/promise.html"; }
+function goHug() { window.location.href = "file:///D:/jagan/hug.html"; }
+function goKiss() { window.location.href = "file:///D:/jagan/kiss%20day.html"; }
+function goValentine() { window.location.href = "file:///D:/jagan/valentine.html"; }
+</script>
+
+</body>
+</html>
