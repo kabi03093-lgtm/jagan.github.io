@@ -1,45 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Valentine Week Celebration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: url("index 2 bg.jpeg") no-repeat center center/cover;
+            background: url("images/index 2 bg.jpeg") no-repeat center center / cover;
             background-attachment: fixed;
             padding: 30px 0;
         }
-        /* Title */
-        
+
         h1 {
             text-align: center;
             color: white;
             font-size: 40px;
-            margin-bottom: 30px;
             text-shadow: 0 0 10px black;
+            margin-bottom: 40px;
         }
-        /* Grid Layout */
-        
+
         .container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 40px;
-            width: 80%;
+            width: 85%;
             margin: auto;
         }
-        /* Card */
-        
+
         .card {
             text-align: center;
             cursor: pointer;
-            transition: 0.3s;
         }
-        /* Circular Image */
-        
+
         .card img {
             width: 180px;
             height: 180px;
@@ -47,22 +42,23 @@
             object-fit: cover;
             border: 6px solid white;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            transition: 0.3s;
+            transition: 0.3s ease;
+
+            /* 🔥 Critical fix */
+            pointer-events: none;
         }
-        /* Hover Effect */
-        
+
         .card:hover img {
             transform: scale(1.12);
             border-color: pink;
         }
-        /* Text */
-        
+
         .card p {
             color: white;
             font-size: 22px;
             font-weight: bold;
-            margin-top: 12px;
             text-shadow: 0 0 8px black;
+            margin-top: 12px;
         }
     </style>
 </head>
@@ -73,82 +69,47 @@
 
     <div class="container">
 
-        <div class="card" onclick="goRose()">
-            <img src="file:///D:/jagan/Logo%20rose.jpeg">
+        <div class="card" onclick="window.location.href='rose.html'">
+            <img src="images/Logo rose.jpeg" alt="Rose Day">
             <p>🌹 Rose Day</p>
         </div>
 
-        <div class="card" onclick="goPropose()">
-            <img src="file:///D:/jagan/Logo%20prop.jpeg">
+        <div class="card" onclick="window.location.href='propose-day.html'">
+            <img src="images/Logo prop.jpeg" alt="Propose Day">
             <p>💍 Propose Day</p>
         </div>
 
-        <div class="card" onclick="goChocolate()">
-            <img src="file:///D:/jagan/Logo%20choco.jpeg">
+        <div class="card" onclick="window.location.href='chocolate.html'">
+            <img src="images/Logo choco.jpeg" alt="Chocolate Day">
             <p>🍫 Chocolate Day</p>
         </div>
 
-        <div class="card" onclick="goTeddy()">
-            <img src="file:///D:/jagan/Logo%20teddy.jpeg">
+        <div class="card" onclick="window.location.href='teddy.html'">
+            <img src="images/Logo teddy.jpeg" alt="Teddy Day">
             <p>🧸 Teddy Day</p>
         </div>
 
-        <div class="card" onclick="goPromise()">
-            <img src="file:///D:/jagan/Logo%20pro.jpeg">
+        <div class="card" onclick="window.location.href='promise.html'">
+            <img src="images/Logo pro.jpeg" alt="Promise Day">
             <p>🤝 Promise Day</p>
         </div>
 
-        <div class="card" onclick="goHug()">
-            <img src="file:///D:/jagan/Logo%20hug.jpeg">
+        <div class="card" onclick="window.location.href='hug.html'">
+            <img src="images/Logo hug.jpeg" alt="Hug Day">
             <p>🤗 Hug Day</p>
         </div>
 
-        <div class="card" onclick="goKiss()">
-            <img src="file:///D:/jagan/Logo%20kisss.jpeg">
+        <div class="card" onclick="window.location.href='kiss-day.html'">
+            <img src="images/Logo kisss.jpeg" alt="Kiss Day">
             <p>💋 Kiss Day</p>
         </div>
 
-        <div class="card" onclick="goValentine()">
-            <img src="file:///D:/jagan/Logo%20valan.jpeg">
+        <div class="card" onclick="window.location.href='valentine.html'">
+            <img src="images/Logo valan.jpeg" alt="Valentine Day">
             <p>❤️ Valentine’s Day</p>
         </div>
 
     </div>
 
-    <script>
-        function goRose() {
-            window.location.href = "file:///D:/jagan/rose.html";
-        }
-
-        function goPropose() {
-            window.location.href = "file:///D:/jagan/propose%20day.html";
-        }
-
-        function goChocolate() {
-            window.location.href = "file:///D:/jagan/cocolate.html";
-        }
-
-        function goTeddy() {
-            window.location.href = "file:///D:/jagan/teddy.html";
-        }
-
-        function goPromise() {
-            window.location.href = "file:///D:/jagan/promise.html";
-        }
-
-        function goHug() {
-            window.location.href = "file:///D:/jagan/hug.html";
-        }
-
-        function goKiss() {
-            window.location.href = "file:///D:/jagan/kiss%20day.html";
-        }
-
-        function goValentine() {
-            window.location.href = "file:///D:/jagan/valentine.html";
-        }
-    </script>
-
 </body>
-
 </html>
