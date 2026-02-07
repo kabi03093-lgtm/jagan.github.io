@@ -12,29 +12,25 @@ body, html {
   width: 100%;
   min-height: 100vh;
   font-family: Georgia, serif;
-  background: url('ptopose day.jpeg') no-repeat center center/cover;
+  background: url('images/propose day.jpeg') no-repeat center center/cover;
   background-attachment: fixed;
 }
 
 /* Dark overlay */
 .overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0,0,0,0.5);
   z-index: -1;
 }
 
-/* Scroll container */
+/* Content */
 .container {
   max-width: 900px;
   margin: 50px auto;
   padding: 20px;
 }
 
-/* Glass box */
 .box {
   background: rgba(0,0,0,0.45);
   backdrop-filter: blur(8px);
@@ -55,19 +51,18 @@ body, html {
 }
 
 @keyframes blink {
-  0%,100%{opacity:1;}
-  50%{opacity:0;}
+  50% { opacity: 0; }
 }
 
 /* Buttons */
 .buttons {
-  margin-top: 20px;
+  margin-top: 30px;
   display: none;
   text-align: center;
 }
 
 button {
-  padding: 12px 30px;
+  padding: 12px 35px;
   font-size: 18px;
   border: none;
   border-radius: 30px;
@@ -86,12 +81,13 @@ button {
   position: relative;
 }
 
-/* Sad quotes box */
+/* Sad text */
 #sadBox {
   display: none;
-  margin-top: 20px;
+  margin-top: 25px;
   font-size: 1.3rem;
-  line-height: 1.0;
+  line-height: 1.3;
+  color: #ffb3c6;
 }
 </style>
 </head>
@@ -101,8 +97,8 @@ button {
 <div class="overlay"></div>
 
 <div class="container">
-  <div class="box">
-    <span id="typed-msg"></span><span class="cursor">|</span>
+  <div class="box" id="box">
+    <span id="typed-msg"></span><span class="cursor"></span>
 
     <div class="buttons" id="buttons">
       <button id="yesBtn">YES 💖</button>
@@ -114,83 +110,90 @@ button {
 </div>
 
 <script>
-// Main proposal message
-const message = `Ithuku munnadi na evlo situation la happy ah irunthirukan neraya per en life la vanthiruknga ana appo la illatha oru impact na unna patha antha second la etho puthusa enaku irunchi you entered my heart even before you entered my life.
+/* Proposal text */
+const message = `Ithuku munnadi na evlo situation la happy ah irunthirukan
+neraya per en life la vanthiruknga
+ana appo la illatha oru impact
+na unna patha antha second la etho puthusa enaku irunchi
 
-And finally when you entered my life I can absorb that my days were become brighter than before.
+You entered my heart even before you entered my life.
 
-You are the reason I smiled a lot. Every moment with you is special.
+And finally when you entered my life
+my days became brighter than before.
 
-You entered my life as a friend, but now I want you as my forever happiness 💖
+You are the reason I smiled a lot.
+Every moment with you is special.
+
+You entered my life as a friend,
+but now I want you as my forever happiness 💖
 
 Will you be mine forever?
 
 I LOVEEEEEEEEEEEE YOUUUUUUU SOOOOO MUCHHHH 🫂`;
 
 let i = 0;
-const speed = 60;
+const speed = 50;
 
 function typeWriter() {
   if (i < message.length) {
-    const char = message.charAt(i);
-    document.getElementById("typed-msg").innerHTML += (char === '\n') ? "<br><br>" : char;
+    document.getElementById("typed-msg").innerHTML +=
+      message[i] === "\n" ? "<br><br>" : message[i];
     i++;
     setTimeout(typeWriter, speed);
-  } 
-  else {
+  } else {
     document.getElementById("buttons").style.display = "block";
   }
 }
 
-window.onload = () => typeWriter();
+window.onload = typeWriter;
 
-// YES BUTTON
+/* YES BUTTON */
 document.getElementById("yesBtn").onclick = () => {
-  document.querySelector(".box").innerHTML = `
-  <div style="font-size:1.6rem; color:pink; line-height:1.5;">
-  That's so sweet 💖<br><br>
-  I will take care of you for my entire life.<br>
-  I will be always there for youhh.<br>
-  Keep smiling always 😊
-  </div>`;
+  document.getElementById("box").innerHTML = `
+    <div style="font-size:1.6rem; color:pink; line-height:1.6; text-align:center;">
+      That's so sweet 💖<br><br>
+      I will take care of you for my entire life.<br>
+      I will be always there for youhh.<br><br>
+      Keep smiling always 😊
+    </div>`;
 };
 
-// NO BUTTON LOGIC
-let jumpCount = 0;
+/* NO BUTTON ESCAPE */
+let jumps = 0;
 const noBtn = document.getElementById("noBtn");
 
 noBtn.addEventListener("mouseover", () => {
-  if (jumpCount < 5) {
-    jumpCount++;
-    noBtn.style.left = Math.random()*200 - 100 + "px";
-    noBtn.style.top = Math.random()*200 - 100 + "px";
+  if (jumps < 5) {
+    jumps++;
+    const x = Math.random() * 600 - 300;
+    const y = Math.random() * 400 - 200;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
   }
 });
 
-// After 5 jumps allow click
+/* After 5 escapes allow click */
 noBtn.onclick = () => {
-  if (jumpCount < 10) return;
+  if (jumps < 5) return;
 
   document.getElementById("sadBox").style.display = "block";
   document.getElementById("sadBox").innerHTML = "";
-  showSadQuotes();
+  showSad();
 };
 
-// Sad quotes typing
 const sadLines = [
-"Why??",
-"Really",
-"Think again",
-"Give me a chance",
-"I will be sad 😔"
+  "Why??",
+  "Really",
+  "Think again",
+  "Give me a chance",
+  "I will be sad 😔"
 ];
 
-let l = 0;
-function showSadQuotes() {
-  if (l < sadLines.length) {
-    document.getElementById("sadBox").innerHTML += sadLines[l] + "<br>";
-    l++;
-    setTimeout(showSadQuotes, 800);
+let s = 0;
+function showSad() {
+  if (s < sadLines.length) {
+    document.getElementById("sadBox").innerHTML += sadLines[s] + "<br>";
+    s++;
+    setTimeout(showSad, 800);
   }
 }
 </script>
