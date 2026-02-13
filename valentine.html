@@ -2,61 +2,61 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Promise Day</title>
+<title>Our Love Story</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: url("valantaine day.jpeg") no-repeat center center/cover;
-    background-attachment: fixed;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body{
+    margin:0;
+    background:url("bg.jpeg") no-repeat center center fixed;
+    background-size:cover;
+    font-family:Segoe UI, sans-serif;
+    color:white;
+    padding:60px 20px;
 }
 
 /* Dark overlay */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.45);
-    z-index: 0;
+.overlay{
+    position:fixed;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.65);
+    z-index:-1;
 }
 
-/* Center faded box */
-.text-box {
-    position: relative;
-    z-index: 2;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(10px);
-    padding: 30px 50px;
-    border-radius: 25px;
-    border: 2px solid rgba(255,255,255,0.3);
-    color: white;
-    font-size: 26px;
-    font-weight: bold;
-    width: 70%;
-    max-width: 800px;
-    text-align: center;
-    line-height: 1.7;
-    text-shadow: 0 0 15px black;
+/* Story container */
+.box{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(12px);
+    padding:40px;
+    border-radius:20px;
+    max-width:800px;
+    margin:auto;
+    font-size:22px;
+    line-height:1.8;
 }
 
-/* Cursor */
-.cursor {
-    display: inline-block;
-    width: 8px;
-    background: white;
-    animation: blink 0.7s infinite;
+/* Button */
+button{
+    margin-top:30px;
+    padding:12px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:25px;
+    background:gray;
+    color:white;
+    cursor:not-allowed;
+    transition:0.3s;
 }
 
-@keyframes blink {
-    0%,50% {opacity:1;}
-    50.1%,100% {opacity:0;}
+button.active{
+    background:pink;
+    color:black;
+    cursor:pointer;
+}
+
+button.active:hover{
+    background:#ff4da6;
 }
 </style>
 </head>
@@ -65,45 +65,87 @@ body {
 
 <div class="overlay"></div>
 
-<div class="text-box" id="text"></div><span class="cursor"></span>
+<!-- Background Music -->
+<audio id="bgm" autoplay loop muted>
+    <source src="song1.mp3" type="audio/mp3">
+</audio>
+
+<div class="box">
+    <div id="text"></div>
+    <button id="nextBtn" disabled>Next ➤</button>
+</div>
 
 <script>
-const lines = [
-"Un life-la kastame varama irukum nu na promise panna mudiyathu.",
-"But I assure you one thing ennala un life-la endha kastamum varama pathupen.",
-"",
-"Endha situation ah irunthalum, endha kashtam vandhalum,",
-"nee adha thaniya face panna maata I’ll always be there for you.",
-"",
-"Eppovum na un kaiya vida maaten.",
-"I promise, I’ll be with you in every situation, always.",
-"",
-"💞 Happy Promise Day 💞"
-];
 
-let lineIndex = 0;
-let charIndex = 0;
-let speed = 50; // 0.5x typing speed
+const story = `The first day I met you was in our school. That time I was just seeing the corridor through my class window and after some time you came through the corridor. That was the first sight for me 👀. 
 
-function typeText() {
-    if (lineIndex < lines.length) {
-        let currentLine = lines[lineIndex];
+That moment you were carrying your bag like you were not able to carry that much load. Somehow it was too cute 😅. 
 
-        if (charIndex < currentLine.length) {
-            document.getElementById("text").innerHTML += currentLine[charIndex];
-            charIndex++;
-            setTimeout(typeText, speed);
-        } 
-        else {
-            document.getElementById("text").innerHTML += "<br>";
-            lineIndex++;
-            charIndex = 0;
-            setTimeout(typeText, 500); // pause between lines
-        }
+From that day onwards I started collecting details about you. I found your Instagram ID and sent a request. Even though you accepted my request, I didn't have confidence to talk with you. 
+
+My day would never be complete without seeing you. Even if you didn’t see me even a single day, that was okay. 
+
+Two years passed like that. We had conversations sometimes, but not too much and not regularly. I longed to talk to you deeply but I was afraid of what you might think. 
+
+One fine day somehow the conversation started. At that time I didn’t know my life would become this much happier because of you 👀. 
+
+Now you are the reason for my smile, my happiness, and my every day. First we started our journey as friends, but I was not able to see you just as a friend. 
+
+I tried to convey my love many times but I was afraid. What if I even lose your friendship? 
+
+Finally one fine day I conveyed my love to you. Before that day I gave many hints that I had fallen in love with you. 
+
+Finally you accepted my love… and you accepted to be my wife one day 👀🫡. 
+
+That moment I was speechless and very excited. For the first time I felt that my efforts were returning back to me in the same way I gave. 
+
+You became very close to my heart. One day definitely you will become my wife 🫡. 
+
+When we got into the relationship, I remembered a quote I once read: 
+
+"IF IT'S MEANT TO BE, DEFINITELY IT WILL COME TO YOU."
+
+Our story perfectly suits this quote 👀. 
+
+I BELIEVE THAT WE WERE MADE FOR EACH OTHER 🫂❤️.`;
+
+let i = 0;
+const speed = 35;
+
+const textBox = document.getElementById("text");
+const nextBtn = document.getElementById("nextBtn");
+const bgm = document.getElementById("bgm");
+
+/* Start music + typing */
+window.addEventListener("load", function(){
+    bgm.muted = false;
+    bgm.play().catch(()=>{});
+    type();
+});
+
+function type(){
+    if(i < story.length){
+        textBox.innerHTML += story.charAt(i);
+        i++;
+        window.scrollTo(0, document.body.scrollHeight);
+        setTimeout(type, speed);
+    } else {
+        nextBtn.disabled = false;
+        nextBtn.classList.add("active");
     }
 }
 
-typeText();
+nextBtn.addEventListener("click", function(){
+    bgm.pause();
+    bgm.currentTime = 0;
+
+    document.body.style.opacity = "0";
+
+    setTimeout(function(){
+        window.location.href = "page2.html";
+    },1000);
+});
+
 </script>
 
 </body>

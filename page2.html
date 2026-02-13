@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Best Moments</title>
+
+<style>
+body{
+ margin:0;
+ font-family:Segoe UI;
+ color:white;
+ text-align:center;
+ transition:1s;
+ background:url("bg.jpeg") no-repeat center center/cover;
+}
+
+.overlay{
+ position:fixed;
+ top:0;left:0;width:100%;height:100%;
+ background:rgba(0,0,0,0.6);
+}
+
+.container{
+ position:relative;
+ z-index:2;
+ padding:20px;
+}
+
+/* STRAIGHT LINE GALLERY */
+.gallery{
+ display:flex;
+ justify-content:center;
+ gap:20px;
+ margin-top:20px;
+ flex-wrap:wrap;
+}
+
+/* SQUARE PHOTO BOX */
+.gallery img{
+ width:150px;
+ height:150px;
+ object-fit:cover;
+ border-radius:15px;
+ border:3px solid white;
+ box-shadow:0 0 15px pink;
+ transition:0.3s;
+}
+
+.gallery img:hover{
+ transform:scale(1.1);
+}
+
+.quote{
+ margin-top:20px;
+ font-size:22px;
+ background:rgba(255,255,255,0.15);
+ padding:20px;
+ border-radius:20px;
+ backdrop-filter:blur(10px);
+ max-width:700px;
+ margin-left:auto;
+ margin-right:auto;
+ line-height:1.6;
+}
+
+button{
+ margin-top:20px;
+ padding:10px 30px;
+ font-size:18px;
+ border:none;
+ border-radius:20px;
+ background:pink;
+ cursor:pointer;
+}
+button:hover{
+ background:#ff69b4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="container">
+
+<h2>✨ Our Best Moments ✨</h2>
+
+<div class="gallery">
+    <img src="jaga 1.jpeg">
+    <img src="jaga 2.jpeg">
+    <img src="jaga 3.jpeg">
+    <img src="jaga 4.jpeg">
+</div>
+
+<div class="quote">
+When someone asks me which was the best moment with youhh 👀?? <br><br>
+
+My answer would be — it’s not a particular moment.  
+Every second being close to you feels so special ✨ <br><br>
+
+Every second with you is a memorable moment.  
+I have seen my new version in front of youhhh 👀 <br><br>
+
+So every moment with you was more precious than anything else in this world 📸🫶!!
+</div>
+
+<button onclick="nextPage()">Next ➤</button>
+
+</div>
+
+<script>
+function nextPage(){
+ document.body.style.opacity=0;
+ setTimeout(()=>{window.location="page3.html";},1000);
+}
+</script>
+
+</body>
+</html>
